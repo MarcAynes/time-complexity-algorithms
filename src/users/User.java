@@ -7,9 +7,9 @@ public class User {
 
     private String username;
 
-    private int followers;
+    private long followers;
 
-    private int follows;
+    private long follows;
 
     private Double activity;
 
@@ -27,22 +27,22 @@ public class User {
         this.username = username;
     }
 
-    public int getFollowers() {
+    public long getFollowers() {
 
         return followers;
     }
 
-    public void setFollowers(int followers) {
+    public void setFollowers(long followers) {
 
         this.followers = followers;
     }
 
-    public int getFollows() {
+    public long getFollows() {
 
         return follows;
     }
 
-    public void setFollows(int follows) {
+    public void setFollows(long follows) {
 
         this.follows = follows;
     }

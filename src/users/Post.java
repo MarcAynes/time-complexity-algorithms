@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Post {
 
-    private int id;
+    private long id;
 
     private long published;
 
@@ -16,12 +16,12 @@ public class Post {
 
     private ArrayList<String> commentedBy = null;
 
-    public int getId() {
+    public long getId() {
 
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
 
         this.id = id;
     }

@@ -7,11 +7,11 @@ public class Connection {
 
     private long since;
 
-    private int visits;
+    private long visits;
 
-    private int likes;
+    private long likes;
 
-    private int comments;
+    private long comments;
 
     public String getUsername() {
 
@@ -33,32 +33,32 @@ public class Connection {
         this.since = since;
     }
 
-    public int getVisits() {
+    public long getVisits() {
 
         return visits;
     }
 
-    public void setVisits(int visits) {
+    public void setVisits(long visits) {
 
         this.visits = visits;
     }
 
-    public int getLikes() {
+    public long getLikes() {
 
         return likes;
     }
 
-    public void setLikes(int likes) {
+    public void setLikes(long likes) {
 
         this.likes = likes;
     }
 
-    public int getComments() {
+    public long getComments() {
 
         return comments;
     }
 
-    public void setComments(int comments) {
+    public void setComments(long comments) {
 
         this.comments = comments;
     }
