@@ -29,6 +29,7 @@ public class Menu {
                         System.out.println("6. Salir");
                         opcionM = sc.next().charAt(0);
                     } while (opcionM < '1' || opcionM > '6');
+
                     switch (opcionM) {
                         case '1':
 
@@ -71,6 +72,7 @@ public class Menu {
                         System.out.println("6. Salir");
                         opcionM = sc.next().charAt(0);
                     } while (opcionM < '1' || opcionM > '6');
+
                     switch (opcionM) {
                         case '1':
 
@@ -84,9 +86,22 @@ public class Menu {
 
                             break;
 
+                        case '4':
+
+                            break;
+
+                        case '5':
+
+                            break;
+
+                        case '6':
+
+                            break;
+
                         default:
 
                             break;
+
                     }
                     break;
 
