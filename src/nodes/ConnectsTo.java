@@ -2,14 +2,14 @@ package nodes;
 
 public class ConnectsTo {
 
-    private long to;
+    private int to;
 
     private String name;
 
     private long cost;
 
 
-    public void setTo(long to) {
+    public void setTo(int to) {
 
         this.to = to;
     }
@@ -35,7 +35,7 @@ public class ConnectsTo {
         return cost;
     }
 
-    public long getTo() {
+    public int getTo() {
 
         return to;
     }

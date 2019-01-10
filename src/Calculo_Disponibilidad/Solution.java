@@ -1,21 +1,57 @@
 package Calculo_Disponibilidad;
 
+import nodes.Node;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Solution {
-    List<Integer> nodos;
-    float coste;
-    float fiabilidad;
+    private List<Node> nodos;
+    private double coste;
+    private double fiabilidad;
 
     public Solution(){
         nodos = new ArrayList<>();
-        coste = 0;
+        coste = Double.POSITIVE_INFINITY;
         fiabilidad = 0;
     }
 
-    public boolean isSolution(int n){
-        return nodos.size() == n;
+    public boolean isSolution(int destination){
+        return nodos.get(nodos.size() - 1).getId() == destination;
     }
 
+    public List<Node> getNodos() {
+        return nodos;
+    }
+
+    public void setNodos(List<Node> nodos) {
+        this.nodos = nodos;
+    }
+
+    public void addNodo(Node nodo) {
+        nodos.add(nodo);
+
+    }
+
+    public double getCoste() {
+        return coste;
+    }
+
+    public void setCoste(double coste) {
+        this.coste = coste;
+    }
+
+    public double getFiabilidad() {
+        return fiabilidad;
+    }
+
+    public void setFiabilidad(double fiabilidad) {
+        this.fiabilidad = fiabilidad;
+    }
+
+    public void sumaValores(Solution aux, int index){
+        int last = aux.getNodos().size() - 1;
+        coste = aux.getNodos().get(last).getConnectsTo().get(index).getCost();
+        fiabilidad = aux.getNodos().get(last).getReliability();
+    }
 }
