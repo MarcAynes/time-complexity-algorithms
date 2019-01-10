@@ -1,3 +1,4 @@
+import Pantalla.Menu;
 import Server.Server;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -10,6 +11,7 @@ import java.io.FileReader;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
+        Menu menu = new Menu();
         Gson gson = new GsonBuilder().create();
 
         BufferedReader nodesDataset = null;
@@ -26,6 +28,7 @@ public class Main {
         usersDataset = new BufferedReader(new FileReader("Datasets/users.json"));
         User[] leerUser = gson.fromJson(usersDataset, User[].class);
 
+        menu.menu();
 
 
     }
