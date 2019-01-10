@@ -1,5 +1,8 @@
+import Server.Server;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import nodes.Node;
+import users.User;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -15,13 +18,14 @@ public class Main {
 
 
         nodesDataset = new BufferedReader(new FileReader("Datasets/nodes.json"));
+        Node[] leerNode = gson.fromJson(nodesDataset, Node[].class);
 
         serversDataset = new BufferedReader(new FileReader("Datasets/servers.json"));
+        Server[] leerServer = gson.fromJson(serversDataset, Server[].class);
 
         usersDataset = new BufferedReader(new FileReader("Datasets/users.json"));
-
-
-
+        User[] leerUser = gson.fromJson(usersDataset, User[].class);
+        
 
     }
 }
