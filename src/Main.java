@@ -25,7 +25,8 @@ public class Main {
 
         usersDataset = new BufferedReader(new FileReader("Datasets/users.json"));
         User[] leerUser = gson.fromJson(usersDataset, User[].class);
-        
+
+
 
     }
 }

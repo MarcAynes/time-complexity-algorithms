@@ -6,7 +6,7 @@ public class Post {
 
     private int id;
 
-    private int published;
+    private long published;
 
     private ArrayList<Double> location = null;
 
@@ -17,50 +17,62 @@ public class Post {
     private ArrayList<String> commentedBy = null;
 
     public int getId() {
+
         return id;
     }
 
     public void setId(int id) {
+
         this.id = id;
     }
 
-    public int getPublished() {
+    public long getPublished() {
+
         return published;
     }
 
-    public void setPublished(int published) {
+    public void setPublished(long published) {
+
         this.published = published;
     }
 
     public ArrayList<Double> getLocation() {
+
         return location;
     }
 
     public void setLocation(ArrayList<Double> location) {
+
         this.location = location;
     }
 
     public String getCategory() {
+
         return category;
     }
 
     public void setCategory(String category) {
+
         this.category = category;
     }
 
     public ArrayList<String> getLikedBy() {
+
         return likedBy;
     }
 
     public void setLikedBy(ArrayList<String> likedBy) {
+
         this.likedBy = likedBy;
     }
 
     public ArrayList<String> getCommentedBy() {
+
         return commentedBy;
     }
 
     public void setCommentedBy(ArrayList<String> commentedBy) {
+
         this.commentedBy = commentedBy;
     }
 
