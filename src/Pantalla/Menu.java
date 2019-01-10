@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-    private static void menu() {
+    public static void menu() {
         Scanner sc = new Scanner(System.in);
         char opcion, opcionM;
 

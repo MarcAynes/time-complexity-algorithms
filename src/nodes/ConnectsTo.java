@@ -8,6 +8,12 @@ public class ConnectsTo {
 
     private long cost;
 
+    public ConnectsTo(){
+        to = -1;
+        name = " ";
+        cost = 999999999;
+    }
+
 
     public void setTo(int to) {
 

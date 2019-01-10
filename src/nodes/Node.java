@@ -10,6 +10,12 @@ public class Node {
 
     private ArrayList<ConnectsTo> connectsTo = null;
 
+    public Node(){
+        id = 0;
+        reliability = 0.0;
+
+    }
+
     public long getId() {
 
         return id;
