@@ -34,3 +34,4 @@ target/
 .idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
 .idea/workspace.xml
+*.xml
