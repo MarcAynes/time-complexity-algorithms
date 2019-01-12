@@ -39,7 +39,17 @@ public class BranchAndBound {
     public void BranchAndBound(){
 
         while(!cola.Vacio()){
-            
+            TipoCola x = cola.dequeue();
+            ArrayList<Node> Options = new ArrayList<>();
+            for(int i = 0; x.getNode().getConnectsTo().size() < i; i++){        //expand
+
+                Options.add(candidates[x.getNode().getConnectsTo().get(i).getTo() - 1]);
+            }
+            for(int i = 0; i < Options.size();i++){
+
+                if()
+            }
+
         }
 
 
