@@ -1,4 +1,5 @@
 package Pantalla;
+import Calculo_Disponibilidad.BranchAndBound;
 import Calculo_Disponibilidad.Disponibilidad;
 import Calculo_Disponibilidad.Greedy;
 import Server.Server;
@@ -43,6 +44,8 @@ public class Menu {
                     long nodeServerActual = server[servidor - 1].getReachableFrom() - 1;
                     long nodeServerFinal = server[destino - 1].getReachableFrom();
                     Disponibilidad disponibilidad = new Disponibilidad(node.length);
+                    long StartTime;
+                    long EndTime;
 
                     switch (opcionM) {
                         case '1':
@@ -52,16 +55,21 @@ public class Menu {
                             break;
 
                         case '2':
+                            StartTime = System.nanoTime();
+                            BranchAndBound Branch = new BranchAndBound(node, server, nodeServerActual, nodeServerFinal);
+                            Branch.BranchAndBound(server);
 
+                            EndTime = System.nanoTime();
+                            System.out.println("tiempo de ejecucion: " + ((float) (EndTime - StartTime))/1000000 + "ms");
                             break;
 
                         case '3':
-                            long StartTime = System.nanoTime();
+                            StartTime = System.nanoTime();
                             Greedy g = new Greedy(node, nodeServerActual, nodeServerFinal);
                             g.calculateGreedy();
                             g.ReseteaGreedy();
                             g.calculateGreedyFiable();
-                            long EndTime = System.nanoTime();
+                            EndTime = System.nanoTime();
                             System.out.println("tiempo de ejecucion: " + ((float) (EndTime - StartTime))/1000000 + "ms");
 
                             break;
