@@ -27,6 +27,13 @@ public class TipoCola {
 
     }
 
+    public TipoCola(long c, TipoCola n, Node nodeAux){
+        node = new ArrayList<>();
+        cost = c;
+        this.node.addAll(n.getArray());// n.getArray().;
+        this.node.add(nodeAux);
+    }
+
     public void setNode(Node a){
 
         node.set(0, a);
