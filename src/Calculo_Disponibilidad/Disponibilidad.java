@@ -26,7 +26,7 @@ public class Disponibilidad {
     public void backtracking_D(Node[] nodes, int origin, int destination, int current, int conection_index){
         int index, size;
 
-        if (origin == destination){
+        if (origin + 1 == destination){
             bestCoste.addNodo(nodes[origin]);
             bestCoste.setFiabilidad(nodes[origin].getReliability());
             bestFiabilidad.addNodo(nodes[origin]);
@@ -35,14 +35,18 @@ public class Disponibilidad {
         else if (aux.getNodos().size() == 0){
             aux.addNodo(nodes[origin]);
             aux.setFiabilidad(nodes[origin].getReliability());
+            aux.setCoste(0);
+            visitado[origin] = true;
             size = nodes[origin].getConnectsTo().size();
+
             for (int i = 0; i < size; i++){
                 backtracking_D(nodes, origin, destination, nodes[origin].getConnectsTo().get(i).getTo(), i);
             }
         }
         else {
+            aux.addNodo(nodes[current - 1]);
             aux.sumaValores(aux, conection_index);
-            aux.addNodo(nodes[current]);
+            visitado[current - 1] = true;
 
             if (aux.isSolution(destination)){
                 if(aux.getCoste() < bestCoste.getCoste()){
@@ -54,29 +58,41 @@ public class Disponibilidad {
                 }
             }
             else {
-                size = nodes[current].getConnectsTo().size();
-                for(int i = 0; i < n; i++){
+                size = nodes[current - 1].getConnectsTo().size();
 
-                    for(int j = 0; i < size; i++) {
-                        index = nodes[i].getConnectsTo().get(j).getTo();
 
-                        if (!(visitado[i])) {
-                            aux.addNodo(nodes[index]);
-                        }
+                for(int i = 0; i < size; i++) {
+                    index = nodes[current - 1].getConnectsTo().get(i).getTo();
+
+                    if (!(visitado[index])) {
+                        backtracking_D(nodes, origin, destination, index, i);
                     }
                 }
 
-
             }
+            aux.quitarValores(aux, conection_index);
             aux.getNodos().remove(aux.getNodos().size() - 1);
+            visitado[current - 1] = false;
         }
     }
 
-    public Solution getBestCoste() {
-        return bestCoste;
+    public void getBestCoste() {
+        int size = bestCoste.getNodos().size();
+        System.out.println("Camino de nodos mejor coste:");
+        for(int i = 0; i < size; i++){
+            System.out.println(bestCoste.getNodos().get(i));
+        }
+        System.out.println("\n");
+
     }
 
-    public Solution getBestFiabilidad() {
-        return bestFiabilidad;
+    public void getBestFiabilidad() {
+        int size = bestFiabilidad.getNodos().size();
+        System.out.println("Camino de nodos mejor fiabilidad:");
+        for(int i = 0; i < size; i++){
+            System.out.println(bestFiabilidad.getNodos().get(i));
+        }
+
+        System.out.println("\n");
     }
 }

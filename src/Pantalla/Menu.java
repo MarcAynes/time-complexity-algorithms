@@ -1,4 +1,5 @@
 package Pantalla;
+import Calculo_Disponibilidad.Disponibilidad;
 import Calculo_Disponibilidad.Greedy;
 import Server.Server;
 import nodes.Node;
@@ -29,7 +30,7 @@ public class Menu {
                     int destino = Integer.parseInt(sc.next());
 
                     do {
-                        System.out.println("\nElija el algoritmo para conseguir lasolucion:");
+                        System.out.println("\nElija el algoritmo para conseguir la solucion:");
                         System.out.println("1. Backtracking");
                         System.out.println("2. Branch & Bound");
                         System.out.println("3. Greedy");
@@ -41,10 +42,13 @@ public class Menu {
 
                     long nodeServerActual = server[servidor - 1].getReachableFrom() - 1;
                     long nodeServerFinal = server[destino - 1].getReachableFrom();
+                    Disponibilidad disponibilidad = new Disponibilidad(node.length);
 
                     switch (opcionM) {
                         case '1':
-
+                            disponibilidad.backtracking_D(node, (int) nodeServerActual, (int) nodeServerFinal, 0, 0);
+                            disponibilidad.getBestCoste();
+                            disponibilidad.getBestFiabilidad();
                             break;
 
                         case '2':
@@ -54,7 +58,7 @@ public class Menu {
                         case '3':
                             Greedy g = new Greedy(node, nodeServerActual, nodeServerFinal);
                             g.calculateGreedy();
-                            g.ReseteaGreey();
+                            g.ReseteaGreedy();
                             g.calculateGreedyFiable();
                             break;
 

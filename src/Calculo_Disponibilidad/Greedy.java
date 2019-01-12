@@ -121,7 +121,7 @@ public class Greedy {
 
     }
 
-    public void ReseteaGreey(){
+    public void ReseteaGreedy(){
 
         Solution.clear();
         found = Boolean.FALSE;
