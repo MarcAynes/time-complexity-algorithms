@@ -5,16 +5,16 @@ import java.util.ArrayList;
 public class Server {
 
 
-    private String id;
+    private int id;
 
     private String country;
 
     private ArrayList<Double> location = null;
 
-    private long reachableFrom;
+    private long reachable_from;
 
 
-    public String getId() {
+    public int getId() {
 
         return id;
     }
@@ -31,10 +31,10 @@ public class Server {
 
     public long getReachableFrom() {
 
-        return reachableFrom;
+        return reachable_from;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
 
         this.id = id;
     }
@@ -51,7 +51,7 @@ public class Server {
 
     public void setReachableFrom(long reachableFrom) {
 
-        this.reachableFrom = reachableFrom;
+        this.reachable_from = reachableFrom;
     }
 
 }

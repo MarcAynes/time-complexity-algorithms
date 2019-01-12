@@ -1,9 +1,13 @@
 package Pantalla;
+import Calculo_Disponibilidad.Greedy;
+import Server.Server;
+import nodes.Node;
+
 import java.util.Scanner;
 
 public class Menu {
 
-    public static void menu() {
+    public static void menu(Node[] node, Server[] server) {
         Scanner sc = new Scanner(System.in);
         char opcion, opcionM;
 
@@ -19,6 +23,11 @@ public class Menu {
 
             switch (opcion) {
                 case '1':
+                    System.out.println("A quin servidor es troba en aquest moment?");
+                    int servidor = Integer.parseInt(sc.next());
+                    System.out.println("A que servidor se quiere conectar?");
+                    int destino = Integer.parseInt(sc.next());
+
                     do {
                         System.out.println("\nElija el algoritmo para conseguir lasolucion:");
                         System.out.println("1. Backtracking");
@@ -30,6 +39,9 @@ public class Menu {
                         opcionM = sc.next().charAt(0);
                     } while (opcionM < '1' || opcionM > '6');
 
+                    long nodeServerActual = server[servidor - 1].getReachableFrom() - 1;
+                    long nodeServerFinal = server[destino - 1].getReachableFrom();
+
                     switch (opcionM) {
                         case '1':
 
@@ -40,7 +52,10 @@ public class Menu {
                             break;
 
                         case '3':
-
+                            Greedy g = new Greedy(node, nodeServerActual, nodeServerFinal);
+                            g.calculateGreedy();
+                            g.ReseteaGreey();
+                            g.calculateGreedyFiable();
                             break;
 
                         case '4':
