@@ -56,10 +56,14 @@ public class Menu {
                             break;
 
                         case '3':
+                            long StartTime = System.nanoTime();
                             Greedy g = new Greedy(node, nodeServerActual, nodeServerFinal);
                             g.calculateGreedy();
                             g.ReseteaGreedy();
                             g.calculateGreedyFiable();
+                            long EndTime = System.nanoTime();
+                            System.out.println("tiempo de ejecucion: " + ((float) (EndTime - StartTime))/1000000 + "ms");
+
                             break;
 
                         case '4':
