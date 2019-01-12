@@ -50,11 +50,11 @@ public class Disponibilidad {
 
             if (aux.isSolution(destination)){
                 if(aux.getCoste() < bestCoste.getCoste()){
-                    bestCoste = aux;
+                    bestCoste.clonar(aux);
                 }
 
                 if(aux.getFiabilidad() > bestFiabilidad.getFiabilidad()){
-                    bestFiabilidad = aux;
+                    bestFiabilidad.clonar(aux);
                 }
             }
             else {
@@ -64,7 +64,7 @@ public class Disponibilidad {
                 for(int i = 0; i < size; i++) {
                     index = nodes[current - 1].getConnectsTo().get(i).getTo();
 
-                    if (!(visitado[index])) {
+                    if (!(visitado[index - 1])) {
                         backtracking_D(nodes, origin, destination, index, i);
                     }
                 }
@@ -80,7 +80,7 @@ public class Disponibilidad {
         int size = bestCoste.getNodos().size();
         System.out.println("Camino de nodos mejor coste:");
         for(int i = 0; i < size; i++){
-            System.out.println(bestCoste.getNodos().get(i));
+            System.out.println(bestCoste.getNodos().get(i).getId());
         }
         System.out.println("\n");
 
@@ -90,7 +90,7 @@ public class Disponibilidad {
         int size = bestFiabilidad.getNodos().size();
         System.out.println("Camino de nodos mejor fiabilidad:");
         for(int i = 0; i < size; i++){
-            System.out.println(bestFiabilidad.getNodos().get(i));
+            System.out.println(bestFiabilidad.getNodos().get(i).getId());
         }
 
         System.out.println("\n");

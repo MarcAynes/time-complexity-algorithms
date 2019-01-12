@@ -60,4 +60,16 @@ public class Solution {
         coste-= aux.getNodos().get(last).getConnectsTo().get(index).getCost();
         fiabilidad /= aux.getNodos().get(last).getReliability();
     }
+
+    public void clonar (Solution solution){
+        int size = solution.getNodos().size();
+        nodos.clear();
+
+        for(int i = 0; i < size; i++){
+            this.nodos.add(solution.nodos.get(i));
+        }
+
+        this.coste = solution.getCoste();
+        this.fiabilidad = solution.getFiabilidad();
+    }
 }
