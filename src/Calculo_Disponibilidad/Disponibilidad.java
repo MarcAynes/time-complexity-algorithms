@@ -11,7 +11,6 @@ public class Disponibilidad {
     private Solution bestFiabilidad;
     private Solution aux;
     private boolean [] visitado;
-    private int n;
 
     public Disponibilidad(int n){
         bestCoste = new Solution();
@@ -19,7 +18,6 @@ public class Disponibilidad {
         aux = new Solution();
         visitado = new boolean[n];
         Arrays.fill(visitado, false);
-        this.n = n;
     }
 
 
