@@ -43,8 +43,8 @@ public class Menu {
                         opcionM = sc.next().charAt(0);
                     } while (opcionM < '1' || opcionM > '6');
 
-                    long[] nodeServerActual = server[servidor - 1].getReachableFrom();
-                    long[] nodeServerFinal = server[destino - 1].getReachableFrom();
+                    ArrayList<Long> nodeServerActual = server[servidor - 1].getReachableFrom();
+                    ArrayList<Long> nodeServerFinal = server[destino - 1].getReachableFrom();
                     Disponibilidad disponibilidad = new Disponibilidad(node.length);
                     long StartTime;
                     long EndTime;

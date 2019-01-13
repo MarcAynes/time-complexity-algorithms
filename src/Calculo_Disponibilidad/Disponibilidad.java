@@ -25,36 +25,36 @@ public class Disponibilidad {
     }
 
 
-        public void backtracking_D(Node[] nodes, long [] origin, long [] destination, int current, int conection_index){
+        public void backtracking_D(Node[] nodes, ArrayList<Long> origin, ArrayList<Long> destination, int current, int conection_index){
         int index, size;
         boolean solucion = false;
 
         if (!inicio){
-            for(int i = 0; i < origin.length; i++){
-                for (int m = 0; m < destination.length; m++) {
-                    if (origin[i].intValue() + 1 == destination[m].intValue()) {
-                        bestCoste.addNodo(nodes[origin[i].intValue() - 1]);
-                        bestCoste.setFiabilidad(nodes[origin[i].intValue() - 1].getReliability());
-                        bestFiabilidad.addNodo(nodes[origin[i]intValue() - 1]);
-                        bestFiabilidad.setFiabilidad(nodes[origin[i].intValue() - 1].getReliability());
+            for(int i = 0; i < origin.size(); i++){
+                for (int m = 0; m < destination.size(); m++) {
+                    if (  origin.get(i) + 1 ==   destination.get(m).intValue()) {
+                        bestCoste.addNodo(nodes[  origin.get(i).intValue() - 1]);
+                        bestCoste.setFiabilidad(nodes[  origin.get(i).intValue() - 1].getReliability());
+                        bestFiabilidad.addNodo(nodes[  (origin.get(i).intValue()) - 1]);
+                        bestFiabilidad.setFiabilidad(nodes[  origin.get(i).intValue() - 1].getReliability());
                         break;
                     }
                 }
 
                 if (aux.getNodos().size() == 0) {
-                    aux.addNodo(nodes[origin[i].intValue() - 1]);
-                    aux.setFiabilidad(nodes[origin[i].intValue() - 1].getReliability());
+                    aux.addNodo(nodes[  origin.get(i).intValue() - 1]);
+                    aux.setFiabilidad(nodes[  origin.get(i).intValue() - 1].getReliability());
                     aux.setCoste(0);
-                    visitado[origin[i].intValue() - 1] = true;
-                    size = nodes[origin[i].intValue() - 1].getConnectsTo().size();
+                    visitado[  origin.get(i).intValue() - 1] = true;
+                    size = nodes[  origin.get(i).intValue() - 1].getConnectsTo().size();
 
                     for (int k = 0; k < size; k++) {
                         inicio = true;
-                        backtracking_D(nodes, origin, destination, nodes[origin[i].intValue() - 1].getConnectsTo().get(k).getTo(), k);
+                        backtracking_D(nodes, origin, destination, nodes[  origin.get(i).intValue() - 1].getConnectsTo().get(k).getTo(), k);
                         inicio = false;
                     }
 
-                    visitado[origin[i].intValue() - 1] = false;
+                    visitado[  origin.get(i).intValue() - 1] = false;
                     aux.setFiabilidad(0);
                     aux.getNodos().clear();
 
@@ -68,8 +68,8 @@ public class Disponibilidad {
 
             solucion = false;
 
-            for (int y = 0; y < destination.length; y++){
-                if (aux.isSolution(destination[y].intValue())) {
+            for (int y = 0; y < destination.size(); y++){
+                if (aux.isSolution( destination.get(y).intValue())) {
                     solucion = true;
                     if (aux.getCoste() < bestCoste.getCoste()) {
                         bestCoste.clonar(aux);
