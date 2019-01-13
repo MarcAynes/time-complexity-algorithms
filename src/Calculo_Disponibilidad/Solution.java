@@ -51,13 +51,15 @@ public class Solution {
 
     public void sumaValores(Solution aux, int index){
         int last = aux.getNodos().size() - 1;
+
         coste += aux.getNodos().get(last - 1).getConnectsTo().get(index).getCost();
         fiabilidad *= aux.getNodos().get(last).getReliability();
     }
 
     public void quitarValores(Solution aux, int index){
         int last = aux.getNodos().size() - 1;
-        coste-= aux.getNodos().get(last).getConnectsTo().get(index).getCost();
+
+        coste-= aux.getNodos().get(last - 1).getConnectsTo().get(index).getCost();
         fiabilidad /= aux.getNodos().get(last).getReliability();
     }
 

@@ -19,10 +19,10 @@ public class Main {
         BufferedReader usersDataset = null;
 
 
-        nodesDataset = new BufferedReader(new FileReader("Datasets/nodes.json"));
+        nodesDataset = new BufferedReader(new FileReader("Datasets/nodes_plus.json"));
         Node[] leerNode = gson.fromJson(nodesDataset, Node[].class);
 
-        serversDataset = new BufferedReader(new FileReader("Datasets/servers.json"));
+        serversDataset = new BufferedReader(new FileReader("Datasets/servers_plus.json"));
         Server[] leerServer = gson.fromJson(serversDataset, Server[].class);
 
         usersDataset = new BufferedReader(new FileReader("Datasets/users.json"));
