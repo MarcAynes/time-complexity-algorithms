@@ -42,6 +42,7 @@ public class Greedy {
                     break;
                 }
             }
+            distancia--;
 
        }
        if(printa == 1) {
@@ -128,12 +129,13 @@ public class Greedy {
                 break;
             }
             Solution.add(c);
-            for (int i = 0; a[(int) destino].getReachableFrom().size() > i; i++) {
-                if (c.getId() == a[(int) destino].getReachableFrom().get(i)) {
-                    found = Boolean.TRUE;
-                    break;
+                for (int i = 0; a[(int) destino].getReachableFrom().size() > i; i++) {
+                    if (c.getId() == a[(int) destino].getReachableFrom().get(i)) {
+                        found = Boolean.TRUE;
+                        break;
+                    }
                 }
-            }
+                distancia--;
 
         }
 

@@ -1,5 +1,6 @@
 package Calculo_Disponibilidad;
 
+import Calculo_Disponibilidad.Cola.TipoCola;
 import nodes.Node;
 
 import java.util.Arrays;
@@ -120,6 +121,18 @@ public class Disponibilidad {
         }
 
         System.out.println("\n");
+    }
+
+    public void setBestCoste(TipoCola Bestc){
+        this.bestCoste.setCoste(Bestc.getCost());
+        this.bestCoste.setNodos(Bestc.getArray());
+
+    }
+
+    public void setBestFiabilidad(TipoCola Bestf){
+        this.bestFiabilidad.setFiabilidad(Bestf.getFiability());
+        this.bestFiabilidad.setNodos(Bestf.getArray());
+
     }
 
 }

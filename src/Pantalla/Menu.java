@@ -80,6 +80,16 @@ public class Menu {
                             break;
 
                         case '4':
+                            StartTime = System.nanoTime();
+                            TipoCola BestcB;
+                            TipoCola BestFB;
+                            Greedy a = new Greedy(node, servidor - 1, destino - 1, 0);
+                            BestcB = a.calculateGreedy(server);
+                            a.ReseteaGreedy();
+                            BestFB = a.calculateGreedyFiable(server);
+
+                            EndTime = System.nanoTime();
+                            System.out.println("tiempo de ejecucion: " + ((float) (EndTime - StartTime))/1000000 + "ms");
 
                             break;
 
