@@ -87,7 +87,11 @@ public class Menu {
                             BestcB = a.calculateGreedy(server);
                             a.ReseteaGreedy();
                             BestFB = a.calculateGreedyFiable(server);
-
+                            disponibilidad.setBestCoste(BestcB);
+                            disponibilidad.setBestFiabilidad(BestFB);
+                            disponibilidad.backtracking_D(node, nodeServerActual, nodeServerFinal, 0, 0);
+                            disponibilidad.getBestCoste();
+                            disponibilidad.getBestFiabilidad();
                             EndTime = System.nanoTime();
                             System.out.println("tiempo de ejecucion: " + ((float) (EndTime - StartTime))/1000000 + "ms");
 
