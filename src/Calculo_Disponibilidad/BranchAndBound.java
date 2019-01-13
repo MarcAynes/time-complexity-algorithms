@@ -86,7 +86,7 @@ public class BranchAndBound {
             }
             for(int i = 0; i < Options.size() || i < OptionsF.size(); i++){
                 try {
-                    if ((Options.get(i).getLastNode().getId() == server[(int) (destino)].getId() && Options.get(i).getCost() < Best.getCost()) && Options.size() > i) {  //if its solution
+                    if ((server[(int) destino].getReachableFrom().contains(Options.get(i).getLastNode().getId())&& Options.get(i).getCost() < Best.getCost()) && Options.size() > i) {  //if its solution
                         Best = Options.get(i);
                     } else {
                         if (Options.get(i).getCost() < Best.getCost()) {
