@@ -4,17 +4,29 @@ import Calculo_Disponibilidad.BranchAndBound;
 import Calculo_Disponibilidad.Cola.TipoCola;
 import Calculo_Disponibilidad.Disponibilidad;
 import Calculo_Disponibilidad.Greedy;
+import Distribucion_Carga.Distribucion;
 import Server.Server;
 import nodes.Node;
+import users.User;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
 
-    public static void menu(Node[] node, Server[] server) {
+    public static void menu(Node[] node, Server[] server, User[] user) {
         Scanner sc = new Scanner(System.in);
         char opcion, opcionM;
+
+        double tolerancia = 0;
+
+        int size = user.length;
+
+        for(int i = 0; i < size; i++){
+            tolerancia += user[i].getActivity();
+        }
+
+        tolerancia /= 5;
 
         System.out.println("Este es el menu principal de InstaSalle!");
 
@@ -135,6 +147,9 @@ public class Menu {
                     break;
 
                 case '2':
+
+                    Distribucion distribucion = new Distribucion(server.length, user.length);
+
                     do {
                         System.out.println("\nElija el algoritmo para conseguir lasolucion:");
                         System.out.println("1. Backtracking");
@@ -148,7 +163,8 @@ public class Menu {
 
                     switch (opcionM) {
                         case '1':
-
+                            distribucion.backtracking_D(server, user, tolerancia);
+                            distribucion.getSolucion();
                             break;
 
                         case '2':
