@@ -51,13 +51,13 @@ public class Menu {
                         opcionM = sc.next().charAt(0);
                     } while (opcionM < '1' || opcionM > '6');
 
-                    long nodeServerActual = server[servidor - 1].getReachableFrom() - 1;
-                    long nodeServerFinal = server[destino - 1].getReachableFrom();
+                    int[] nodeServerActual = server[servidor - 1].getReachableFrom();
+                    int[] nodeServerFinal = server[destino - 1].getReachableFrom();
                     Disponibilidad disponibilidad = new Disponibilidad(node.length);
 
                     switch (opcionM) {
                         case '1':
-                            disponibilidad.backtracking_D(node, (int) nodeServerActual, (int) nodeServerFinal, 0, 0);
+                            disponibilidad.backtracking_D(node, nodeServerActual, nodeServerFinal, 0, 0);
                             disponibilidad.getBestCoste();
                             disponibilidad.getBestFiabilidad();
                             break;

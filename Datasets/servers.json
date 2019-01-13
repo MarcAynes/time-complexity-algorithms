@@ -6,7 +6,7 @@
           48.870961,
           2.332176
         ],
-    "reachable_from": 1
+    "reachable_from": [1]
   }, 
   {
     "id": "2",
@@ -15,7 +15,7 @@
           55.760140,
           37.617844
         ],
-    "reachable_from": 1
+    "reachable_from": [1]
   },
   {
     "id": "3",
@@ -24,7 +24,7 @@
           51.509782,
           -0.126913
         ],
-    "reachable_from": 3
+    "reachable_from": [3]
   },
   {
     "id": "4",
@@ -33,7 +33,7 @@
           45.447464,
           11.001697
         ],
-    "reachable_from": 4
+    "reachable_from": [4]
   },
   {
     "id": "5",
@@ -42,6 +42,6 @@
           40.813678,
           -73.959614
         ],
-    "reachable_from": 2
+    "reachable_from": [2]
   }
 ]
