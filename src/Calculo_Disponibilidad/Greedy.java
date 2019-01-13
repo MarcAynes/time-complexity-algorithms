@@ -1,6 +1,7 @@
 package Calculo_Disponibilidad;
 
 import Calculo_Disponibilidad.Cola.TipoCola;
+import Server.Server;
 import nodes.ConnectsTo;
 import nodes.Node;
 
@@ -22,8 +23,9 @@ public class Greedy {
         this.printa = i;
     }
 
-    public TipoCola calculateGreedy(){
-        Node c = candidates[(int) servidor];
+    public TipoCola calculateGreedy(Server[] a){
+
+        Node c = candidates[(a[(int) (servidor)].getReachableFrom().get(0)).intValue() - 1];
         int distancia = candidates.length;
 
         Solution.add(c);
@@ -34,9 +36,11 @@ public class Greedy {
                 break;
             }
             Solution.add(c);
-            if(c.getId() == destino){
-                found = Boolean.TRUE;
-                break;
+            for (int i = 0; a[(int) destino].getReachableFrom().size() > i; i++) {
+                if (c.getId() == a[(int) destino].getReachableFrom().get(i)) {
+                    found = Boolean.TRUE;
+                    break;
+                }
             }
 
        }
@@ -103,8 +107,17 @@ public class Greedy {
 
     }
 
-    public TipoCola calculateGreedyFiable(){
-        Node c = candidates[(int) servidor];
+    public TipoCola calculateGreedyFiable(Server[] a){
+        Node c = new Node();
+        c.setReliability(0.0);
+        for (int i = 0; i < a[(int) (servidor)].getReachableFrom().size(); i++) {
+
+            Node aux = candidates[(a[(int) (servidor)].getReachableFrom().get(i)).intValue() - 1];
+            if (aux.getReliability() >= c.getReliability()){
+                c = aux;
+            }
+        }
+
         int distancia = candidates.length;
 
         Solution.add(c);
@@ -115,9 +128,11 @@ public class Greedy {
                 break;
             }
             Solution.add(c);
-            if(c.getId() == destino){
-                found = Boolean.TRUE;
-                break;
+            for (int i = 0; a[(int) destino].getReachableFrom().size() > i; i++) {
+                if (c.getId() == a[(int) destino].getReachableFrom().get(i)) {
+                    found = Boolean.TRUE;
+                    break;
+                }
             }
 
         }
@@ -129,7 +144,7 @@ public class Greedy {
                     System.out.println(Solution.get(i).getId());
                 }
                 double fiabilidad = 1;
-                for(int i = 0; i < Solution.size() - 1; i++) {
+                for(int i = 0; i < Solution.size(); i++) {
 
                     fiabilidad = fiabilidad*Solution.get(i).getReliability();
                 }
@@ -145,7 +160,7 @@ public class Greedy {
         }else{
             if(found){
                 double fiabilidad = 1;
-                for(int i = 0; i < Solution.size() - 1; i++) {
+                for(int i = 0; i < Solution.size(); i++) {
 
                     fiabilidad = fiabilidad*Solution.get(i).getReliability();
                 }

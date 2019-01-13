@@ -29,11 +29,11 @@ public class BranchAndBound {
         this.servidor = servidor;
         this.destino = destino;
 
+            for (int i = 0; i < a[(int) (servidor)].getReachableFrom().size(); i++) {
 
-            for(int j = 0; j < a[(int) (servidor)].getReachableFrom(); j++) {
-                TipoCola aux = new TipoCola(0, candidates[(int) (a[(int) (servidor )].getReachableFrom() - 1)]);
-                cola.enqueueNoOrdenate(aux);
-                colaF.enqueueNoOrdenate(aux);
+                    TipoCola aux = new TipoCola(0, candidates[(int) (a[(int) (servidor)].getReachableFrom().get(i) - 1)]);
+                    cola.enqueueNoOrdenate(aux);
+                    colaF.enqueueNoOrdenate(aux);
             }
             cola.Ordenate();        //ordenacion de cola, a partir de aqui tenemos una cola ordenada
             colaF.Ordenate();
@@ -86,7 +86,7 @@ public class BranchAndBound {
             }
             for(int i = 0; i < Options.size() || i < OptionsF.size(); i++){
                 try {
-                    if ((Options.get(i).getLastNode().getId() == server[(int) (destino - 1)].getId() && Options.get(i).getCost() < Best.getCost()) && Options.size() > i) {  //if its solution
+                    if ((Options.get(i).getLastNode().getId() == server[(int) (destino)].getId() && Options.get(i).getCost() < Best.getCost()) && Options.size() > i) {  //if its solution
                         Best = Options.get(i);
                     } else {
                         if (Options.get(i).getCost() < Best.getCost()) {
@@ -97,7 +97,7 @@ public class BranchAndBound {
 
                 }
                 try {
-                    if ((OptionsF.get(i).getLastNode().getId() == server[(int) (destino - 1)].getId() && OptionsF.get(i).getFiability() > BestF.getFiability()) && OptionsF.size() > i) {
+                    if ((OptionsF.get(i).getLastNode().getId() == server[(int) (destino)].getId() && OptionsF.get(i).getFiability() > BestF.getFiability()) && OptionsF.size() > i) {
                         BestF = OptionsF.get(i);
                     } else {
                         if (OptionsF.get(i).getFiability() > BestF.getFiability()) {

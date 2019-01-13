@@ -11,7 +11,7 @@ public class Server {
 
     private ArrayList<Double> location = null;
 
-    private long reachable_from;
+    private ArrayList<Long> reachable_from;
 
 
     public int getId() {
@@ -29,7 +29,7 @@ public class Server {
         return location;
     }
 
-    public long getReachableFrom() {
+    public ArrayList<Long> getReachableFrom() {
 
         return reachable_from;
     }
@@ -49,9 +49,9 @@ public class Server {
         this.location = location;
     }
 
-    public void setReachableFrom(long reachableFrom) {
+   /* public void setReachableFrom(long reachableFrom) {
 
         this.reachable_from = reachableFrom;
-    }
+    }*/
 
 }

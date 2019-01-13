@@ -6,6 +6,7 @@ import Calculo_Disponibilidad.Greedy;
 import Server.Server;
 import nodes.Node;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
@@ -42,8 +43,8 @@ public class Menu {
                         opcionM = sc.next().charAt(0);
                     } while (opcionM < '1' || opcionM > '6');
 
-                    long nodeServerActual = server[servidor - 1].getReachableFrom() - 1;
-                    long nodeServerFinal = server[destino - 1].getReachableFrom();
+                    ArrayList<Long> nodeServerActual = server[servidor - 1].getReachableFrom();
+                    ArrayList<Long> nodeServerFinal = server[destino - 1].getReachableFrom();
                     Disponibilidad disponibilidad = new Disponibilidad(node.length);
                     long StartTime;
                     long EndTime;
@@ -51,7 +52,7 @@ public class Menu {
                     switch (opcionM) {
                         case '1':
                             StartTime = System.nanoTime();
-                            disponibilidad.backtracking_D(node, (int) nodeServerActual, (int) nodeServerFinal, 0, 0);
+                            //disponibilidad.backtracking_D(node, (int) nodeServerActual, (int) nodeServerFinal, 0, 0);
                             disponibilidad.getBestCoste();
                             disponibilidad.getBestFiabilidad();
                             EndTime = System.nanoTime();
@@ -60,7 +61,7 @@ public class Menu {
 
                         case '2':
                             StartTime = System.nanoTime();
-                            BranchAndBound Branch = new BranchAndBound(node, server, nodeServerActual, nodeServerFinal);
+                            BranchAndBound Branch = new BranchAndBound(node, server, servidor - 1, destino - 1);
                             Branch.BranchAndBound(server);
 
                             EndTime = System.nanoTime();
@@ -69,10 +70,10 @@ public class Menu {
 
                         case '3':
                             StartTime = System.nanoTime();
-                            Greedy g = new Greedy(node, nodeServerActual, nodeServerFinal, 1);
-                            g.calculateGreedy();
+                            Greedy g = new Greedy(node, servidor - 1, destino - 1, 1);
+                            g.calculateGreedy(server);
                             g.ReseteaGreedy();
-                            g.calculateGreedyFiable();
+                            g.calculateGreedyFiable(server);
                             EndTime = System.nanoTime();
                             System.out.println("tiempo de ejecucion: " + ((float) (EndTime - StartTime))/1000000 + "ms");
 
@@ -86,11 +87,11 @@ public class Menu {
                             StartTime = System.nanoTime();
                             TipoCola Bestc;
                             TipoCola BestF;
-                            Greedy c = new Greedy(node, nodeServerActual, nodeServerFinal, 0);
-                            Bestc = c.calculateGreedy();
+                            Greedy c = new Greedy(node, servidor - 1, destino - 1, 0);
+                            Bestc = c.calculateGreedy(server);
                             c.ReseteaGreedy();
-                            BestF = c.calculateGreedyFiable();
-                            BranchAndBound BranchG = new BranchAndBound(node, server, nodeServerActual, nodeServerFinal);
+                            BestF = c.calculateGreedyFiable(server);
+                            BranchAndBound BranchG = new BranchAndBound(node, server, servidor - 1, destino - 1);
                             BranchG.BranchAndBoundGreedy(server, Bestc, BestF);
                             EndTime = System.nanoTime();
                             System.out.println("tiempo de ejecucion: " + ((float) (EndTime - StartTime))/1000000 + "ms");
