@@ -84,7 +84,7 @@ public class Disponibilidad {
 
             }
 
-            if(!solucion && aux.getCoste() < bestCoste.getCoste() && aux.getFiabilidad() > bestFiabilidad.getFiabilidad()){
+            if(!solucion && (aux.getCoste() < bestCoste.getCoste() || aux.getFiabilidad() > bestFiabilidad.getFiabilidad())){
                 size = nodes[current - 1].getConnectsTo().size();
 
                 for(int i = 0; i < size; i++) {
