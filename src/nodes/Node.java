@@ -8,7 +8,7 @@ public class Node {
 
     private Double reliability;
 
-    private ArrayList<ConnectsTo> connectsTo = null;
+    private ArrayList<ConnectsTo> connectsTo = new ArrayList<>();
 
     public Node(){
         id = 0;

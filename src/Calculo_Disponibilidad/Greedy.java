@@ -43,7 +43,16 @@ public class Greedy {
            for(int i = 0; i < Solution.size(); i++){
                System.out.println(Solution.get(i).getId());
            }
-           System.out.println();
+           long Coste = 0;
+           for(int i = 0; i < Solution.size() - 1; i++) {
+               for(int j = 0; Solution.get(i).getConnectsTo().size() > j; j++) {
+                   if(Solution.get(i).getConnectsTo().get(j).getTo() == Solution.get(i + 1).getId()){
+                       Coste += Solution.get(i).getConnectsTo().get(j).getCost();
+                   }
+               }
+           }
+           System.out.println("El coste total es: " + Coste);
+
        }else{
            System.out.println("Error, no se ha encontrado con Greedy una solucion por coste");
        }
@@ -93,7 +102,13 @@ public class Greedy {
             for(int i = 0; i < Solution.size(); i++){
                 System.out.println(Solution.get(i).getId());
             }
-            System.out.println();
+            double fiabilidad = 1;
+            for(int i = 0; i < Solution.size() - 1; i++) {
+
+                fiabilidad = fiabilidad*Solution.get(i).getReliability();
+            }
+            System.out.println("La fiabilidad total es: " + fiabilidad);
+
         }else{
             System.out.println("Error, no se ha encontrado con Greedy una solucion al buscar un camino por fiabilidad");
         }

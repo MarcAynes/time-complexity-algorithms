@@ -49,9 +49,12 @@ public class Menu {
 
                     switch (opcionM) {
                         case '1':
+                            StartTime = System.nanoTime();
                             disponibilidad.backtracking_D(node, (int) nodeServerActual, (int) nodeServerFinal, 0, 0);
                             disponibilidad.getBestCoste();
                             disponibilidad.getBestFiabilidad();
+                            EndTime = System.nanoTime();
+                            System.out.println("tiempo de ejecucion: " + ((float) (EndTime - StartTime))/1000000 + "ms");
                             break;
 
                         case '2':
