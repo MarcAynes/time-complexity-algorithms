@@ -1,6 +1,7 @@
 package Calculo_Disponibilidad;
 
 import Calculo_Disponibilidad.Cola.TipoCola;
+import Calculo_Disponibilidad.Solution;
 import nodes.Node;
 
 import java.util.Arrays;

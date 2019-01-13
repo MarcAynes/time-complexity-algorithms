@@ -1,4 +1,5 @@
 package Pantalla;
+
 import Calculo_Disponibilidad.BranchAndBound;
 import Calculo_Disponibilidad.Cola.TipoCola;
 import Calculo_Disponibilidad.Disponibilidad;
