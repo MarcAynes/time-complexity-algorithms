@@ -27,10 +27,22 @@ public class Menu {
 
             switch (opcion) {
                 case '1':
-                    System.out.println("A quin servidor es troba en aquest moment?");
-                    int servidor = Integer.parseInt(sc.next());
-                    System.out.println("A que servidor se quiere conectar?");
-                    int destino = Integer.parseInt(sc.next());
+                    int servidor, destino;
+                    do{
+                        System.out.println("A quin servidor es troba en aquest moment?");
+                        servidor = Integer.parseInt(sc.next());
+                        if(servidor > server.length || servidor < 1){
+                            System.out.println("Error! Opcion fuera de los limites\n");
+                        }
+                    } while (servidor > server.length || servidor < 1);
+
+                    do {
+                        System.out.println("A que servidor se quiere conectar?");
+                        destino = Integer.parseInt(sc.next());
+                        if(destino > server.length || destino < 1){
+                            System.out.println("Error! Opcion fuera de los limites\n");
+                        }
+                    } while (destino > server.length || destino < 1);
 
                     do {
                         System.out.println("\nElija el algoritmo para conseguir la solucion:");

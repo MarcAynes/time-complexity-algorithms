@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4409cf89-f97f-4d4e-8e58-5f7e5c4d896b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2/Calculo_Disponibilidad/Cola/Cola.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2/Calculo_Disponibilidad/Cola/TipoCola.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2/Calculo_Disponibilidad/Cola/num.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2/Calculo_Disponibilidad/Greedy.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2/Calculo_Disponibilidad/Solution.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2/Server/Server.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2/nodes/ConnectsTo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2/nodes/Node.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2/users/Connection.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2/users/Post.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practica2/users/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Calculo_Disponibilidad/Disponibilidad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Calculo_Disponibilidad/Disponibilidad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pantalla/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pantalla/Menu.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,7 +17,7 @@
         <entry file="file://$PROJECT_DIR$/src/Calculo_Disponibilidad/BranchAndBound.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1904">
-              <caret line="112" column="9" lean-forward="true" selection-start-line="112" selection-start-column="9" selection-end-line="112" selection-end-column="9" />
+              <caret line="112" column="9" selection-start-line="112" selection-start-column="9" selection-end-line="112" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -41,8 +28,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Pantalla/Menu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="29" column="20" lean-forward="true" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+            <state relative-caret-position="331">
+              <caret line="44" column="56" lean-forward="true" selection-start-line="44" selection-start-column="56" selection-end-line="44" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -54,7 +41,7 @@
         <entry file="file://$PROJECT_DIR$/src/Calculo_Disponibilidad/Disponibilidad.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="142">
-              <caret line="92" column="77" lean-forward="true" selection-start-line="92" selection-start-column="77" selection-end-line="92" selection-end-column="77" />
+              <caret line="92" column="77" selection-start-line="92" selection-start-column="77" selection-end-line="92" selection-end-column="77" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -171,10 +158,10 @@
         <option value="$PROJECT_DIR$/src/nodes/ConnectsTo.java" />
         <option value="$PROJECT_DIR$/src/Calculo_Disponibilidad/Greedy.java" />
         <option value="$PROJECT_DIR$/src/Calculo_Disponibilidad/Solution.java" />
-        <option value="$PROJECT_DIR$/src/Pantalla/Menu.java" />
         <option value="$PROJECT_DIR$/src/Calculo_Disponibilidad/BranchAndBound.java" />
         <option value="$PROJECT_DIR$/src/Calculo_Disponibilidad/Cola/TipoCola.java" />
         <option value="$PROJECT_DIR$/src/Calculo_Disponibilidad/Disponibilidad.java" />
+        <option value="$PROJECT_DIR$/src/Pantalla/Menu.java" />
       </list>
     </option>
   </component>
@@ -294,7 +281,7 @@
       <workItem from="1547138465846" duration="13093000" />
       <workItem from="1547310337730" duration="6838000" />
       <workItem from="1547404261958" duration="132000" />
-      <workItem from="1547404655136" duration="1850000" />
+      <workItem from="1547404655136" duration="2213000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Added template first option disponibilidad">
       <created>1547140406372</created>
@@ -331,11 +318,18 @@
       <option name="project" value="LOCAL" />
       <updated>1547313629825</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fix: Added comprobacion de is_promised">
+      <created>1547408776988</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1547408776988</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29620000" />
+    <option name="totallyTimeSpent" value="29983000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -412,7 +406,8 @@
     <MESSAGE value="feat: Added isSolution" />
     <MESSAGE value="feat: Updated backtracking to aux = 0 cases" />
     <MESSAGE value="feat: Finished bactracking method for first option" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Finished bactracking method for first option" />
+    <MESSAGE value="fix: Added comprobacion de is_promised" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: Added comprobacion de is_promised" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -540,7 +535,7 @@
     <entry file="file://$PROJECT_DIR$/src/Calculo_Disponibilidad/BranchAndBound.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1904">
-          <caret line="112" column="9" lean-forward="true" selection-start-line="112" selection-start-column="9" selection-end-line="112" selection-end-column="9" />
+          <caret line="112" column="9" selection-start-line="112" selection-start-column="9" selection-end-line="112" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -562,7 +557,7 @@
     <entry file="file://$PROJECT_DIR$/src/Calculo_Disponibilidad/Disponibilidad.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="142">
-          <caret line="92" column="77" lean-forward="true" selection-start-line="92" selection-start-column="77" selection-end-line="92" selection-end-column="77" />
+          <caret line="92" column="77" selection-start-line="92" selection-start-column="77" selection-end-line="92" selection-end-column="77" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -571,8 +566,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Pantalla/Menu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="29" column="20" lean-forward="true" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+        <state relative-caret-position="331">
+          <caret line="44" column="56" lean-forward="true" selection-start-line="44" selection-start-column="56" selection-end-line="44" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
