@@ -43,8 +43,8 @@ public class Menu {
                         opcionM = sc.next().charAt(0);
                     } while (opcionM < '1' || opcionM > '6');
 
-                    ArrayList<Long> nodeServerActual = server[servidor - 1].getReachableFrom();
-                    ArrayList<Long> nodeServerFinal = server[destino - 1].getReachableFrom();
+                    long[] nodeServerActual = server[servidor - 1].getReachableFrom();
+                    long[] nodeServerFinal = server[destino - 1].getReachableFrom();
                     Disponibilidad disponibilidad = new Disponibilidad(node.length);
                     long StartTime;
                     long EndTime;
@@ -52,7 +52,7 @@ public class Menu {
                     switch (opcionM) {
                         case '1':
                             StartTime = System.nanoTime();
-                            //disponibilidad.backtracking_D(node, (int) nodeServerActual, (int) nodeServerFinal, 0, 0);
+                            disponibilidad.backtracking_D(node, nodeServerActual, nodeServerFinal, 0, 0);
                             disponibilidad.getBestCoste();
                             disponibilidad.getBestFiabilidad();
                             EndTime = System.nanoTime();
