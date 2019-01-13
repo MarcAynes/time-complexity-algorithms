@@ -42,6 +42,13 @@ public class TipoCola {
         this.node.add(nodeAux);
     }
 
+    public TipoCola(long c, ArrayList<Node> n, Double f){
+        node = n;
+        cost = c;
+        Fiability = f;
+
+    }
+
     public void setNode(Node a){
 
         node.set(0, a);
@@ -86,4 +93,5 @@ public class TipoCola {
 
         Fiability = a;
     }
+
 }

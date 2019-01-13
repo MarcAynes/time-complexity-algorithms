@@ -1,5 +1,6 @@
 package Pantalla;
 import Calculo_Disponibilidad.BranchAndBound;
+import Calculo_Disponibilidad.Cola.TipoCola;
 import Calculo_Disponibilidad.Disponibilidad;
 import Calculo_Disponibilidad.Greedy;
 import Server.Server;
@@ -68,7 +69,7 @@ public class Menu {
 
                         case '3':
                             StartTime = System.nanoTime();
-                            Greedy g = new Greedy(node, nodeServerActual, nodeServerFinal);
+                            Greedy g = new Greedy(node, nodeServerActual, nodeServerFinal, 1);
                             g.calculateGreedy();
                             g.ReseteaGreedy();
                             g.calculateGreedyFiable();
@@ -82,7 +83,17 @@ public class Menu {
                             break;
 
                         case '5':
-
+                            StartTime = System.nanoTime();
+                            TipoCola Bestc;
+                            TipoCola BestF;
+                            Greedy c = new Greedy(node, nodeServerActual, nodeServerFinal, 0);
+                            Bestc = c.calculateGreedy();
+                            c.ReseteaGreedy();
+                            BestF = c.calculateGreedyFiable();
+                            BranchAndBound BranchG = new BranchAndBound(node, server, nodeServerActual, nodeServerFinal);
+                            BranchG.BranchAndBoundGreedy(server, Bestc, BestF);
+                            EndTime = System.nanoTime();
+                            System.out.println("tiempo de ejecucion: " + ((float) (EndTime - StartTime))/1000000 + "ms");
                             break;
 
                         case '6':
