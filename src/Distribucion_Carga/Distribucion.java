@@ -41,6 +41,9 @@ public class Distribucion {
                 aux2.cercaniaUsuarios();
 
                 if(aux2.getResultadoEquitividad() < best.getResultadoEquitividad()){
+                    if (best.getResultadoEquitividad() < aux2.getResultadoEquitividad() + tolerancia) {
+                        posiblesBest.add(best);
+                    }
                     best.clonar(aux2);
 
                     for (int i = 0; i < posiblesBest.size(); i++) {
