@@ -88,6 +88,7 @@ public class Menu {
                             StartTime = System.nanoTime();
                             BranchAndBound Branch = new BranchAndBound(node, server, servidor - 1, destino - 1);
                             Branch.BranchAndBound(server);
+                            Branch.BranchAndBounfF(server);
 
                             EndTime = System.nanoTime();
                             System.out.println("tiempo de ejecucion: " + ((float) (EndTime - StartTime))/1000000 + "ms");

@@ -42,9 +42,9 @@ public class BranchAndBound {
     public void BranchAndBound(Server[] server){
         TipoCola Best = new TipoCola();
         Best.setCost(999999999);
-        TipoCola BestF = new TipoCola();
 
-        while(!cola.Vacio() || !colaF.Vacio()){
+
+        while(!cola.Vacio()){
             TipoCola x;
             ArrayList<TipoCola> Options = new ArrayList<>();
             if(!cola.Vacio()) {
@@ -54,38 +54,13 @@ public class BranchAndBound {
 
             }
 
-            TipoCola y;
-            ArrayList<TipoCola> OptionsF = new ArrayList<>();
-            if(!colaF.Vacio()){
-                y = colaF.dequeue();
-
-            }else{
-                y = new TipoCola();
-            }
-
-            for(int i = 0; (x.getLastNode().getConnectsTo().size() > i && !contiene(x, Options, i)) || (y.getLastNode().getConnectsTo().size() > i && !contiene(y, OptionsF, i)); i++){        //expand
-                try {
-
+            for(int i = 0; (x.getLastNode().getConnectsTo().size() > i && !contiene(x, Options, i)); i++){        //expand
                     if (x.getLastNode().getConnectsTo().size() > i && !contiene(x, Options, i)) {
                         TipoCola aux = new TipoCola(x.getCost() + x.getLastNode().getConnectsTo().get(i).getCost(), x, candidates[x.getLastNode().getConnectsTo().get(i).getTo() - 1]);
                         Options.add(aux);
                     }
-                }catch (ArrayIndexOutOfBoundsException e){
-
-                }
-
-                try {
-                    if (y.getLastNode().getConnectsTo().size() > i && !contiene(y, OptionsF, i)) {
-                        TipoCola auxF = new TipoCola(0, y, candidates[y.getLastNode().getConnectsTo().get(i).getTo() - 1]);
-                        auxF.setFiability(y.getFiability() * candidates[y.getLastNode().getConnectsTo().get(i).getTo() - 1].getReliability());
-                        OptionsF.add(auxF);
-                    }
-                }catch(ArrayIndexOutOfBoundsException e){
-
-                }
             }
-            for(int i = 0; i < Options.size() || i < OptionsF.size(); i++){
-                try {
+            for(int i = 0; i < Options.size(); i++){
                     if ((server[(int) destino].getReachableFrom().contains(Options.get(i).getLastNode().getId())&& Options.get(i).getCost() < Best.getCost()) && Options.size() > i) {  //if its solution
                         Best = Options.get(i);
                     } else {
@@ -93,20 +68,7 @@ public class BranchAndBound {
                             cola.enqueue(Options.get(i));
                         }
                     }
-                }catch(IndexOutOfBoundsException e){
 
-                }
-                try {
-                    if ((OptionsF.get(i).getLastNode().getId() == server[(int) (destino)].getId() && OptionsF.get(i).getFiability() > BestF.getFiability()) && OptionsF.size() > i) {
-                        BestF = OptionsF.get(i);
-                    } else {
-                        if (OptionsF.get(i).getFiability() > BestF.getFiability()) {
-                            colaF.enquueueF(OptionsF.get(i));
-                        }
-                    }
-                }catch(IndexOutOfBoundsException e){
-
-                }
 
             }
 
@@ -120,15 +82,62 @@ public class BranchAndBound {
         }else{
             System.out.println("Error, No hay camino posible que conecte los servidores");
         }
-        if (BestF.getArray().get(0).getId() != -1){
-            System.out.println("El camino con mas fiablidad es:");
-            for (int i = 0; BestF.getArray().size() > i; i++){
-                System.out.println((BestF.getArray().get(i).getId()));
+
+
+    }
+
+
+    public void BranchAndBounfF(Server[] server){
+        TipoCola BestF = new TipoCola();
+
+        while(!colaF.Vacio()) {
+
+            TipoCola y;
+            ArrayList<TipoCola> OptionsF = new ArrayList<>();
+            if (!colaF.Vacio()) {
+                y = colaF.dequeue();
+
+            } else {
+                y = new TipoCola();
             }
-            System.out.println("La fiabilidad es de: " + BestF.getFiability());
-        }else{
-            System.out.println("Error, no hay camino posible que conecte los servidores ");
+
+            for (int i = 0; (y.getLastNode().getConnectsTo().size() > i && !contiene(y, OptionsF, i)); i++) {
+                if (y.getLastNode().getConnectsTo().size() > i && !contiene(y, OptionsF, i)) {
+                    TipoCola auxF = new TipoCola(0, y, candidates[y.getLastNode().getConnectsTo().get(i).getTo() - 1]);
+                    auxF.setFiability(y.getFiability() * candidates[y.getLastNode().getConnectsTo().get(i).getTo() - 1].getReliability());
+                    OptionsF.add(auxF);
+                }
+
+            }
+
+            for (int i = 0; i < OptionsF.size(); i++) {
+                if ((OptionsF.get(i).getLastNode().getId() == server[(int) (destino)].getId() && OptionsF.get(i).getFiability() > BestF.getFiability()) && OptionsF.size() > i) {
+                    BestF = OptionsF.get(i);
+                } else {
+                    if (OptionsF.get(i).getFiability() > BestF.getFiability()) {
+                        colaF.enquueueF(OptionsF.get(i));
+                    }
+                }
+
+            }
+
         }
+
+            if (BestF.getArray().get(0).getId() != -1){
+                System.out.println("El camino con mas fiablidad es:");
+                for (int i = 0; BestF.getArray().size() > i; i++){
+                    System.out.println((BestF.getArray().get(i).getId()));
+                }
+                System.out.println("La fiabilidad es de: " + BestF.getFiability());
+            }else{
+                System.out.println("Error, no hay camino posible que conecte los servidores ");
+            }
+
+
+
+
+
+
 
 
     }
