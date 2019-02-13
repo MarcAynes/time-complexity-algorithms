@@ -10,7 +10,6 @@ import java.util.List;
 public class Distribucion {
     private Solution2 best, aux2;
     private List<Solution2> posiblesBest;
-    private int contador;
     private boolean [] visitado;
     int sizeUser, sizeServer;
 
@@ -19,7 +18,6 @@ public class Distribucion {
         best = new Solution2(sizeServer);
         posiblesBest = new ArrayList<>();
         aux2 = new Solution2(sizeServer);
-        contador = 0;
         this.sizeServer = sizeServer;
         this.sizeUser = sizeUser;
 
@@ -29,7 +27,7 @@ public class Distribucion {
 
     }
 
-    public void backtracking_D(Server[] servers, User [] users, double tolerancia){
+    public void backtracking_D(Server[] servers, User [] users, double tolerancia, int contador){
         int index, size, size2;
 
         size = users.length;
@@ -67,12 +65,10 @@ public class Distribucion {
                             aux2.getServidores()[index].getUsuarios().add(users[i]);
                             aux2.getServidores()[index].sumarValores(users[i], servers[index]);
                             visitado[i] = true;
-                            contador++;
-                            backtracking_D(servers, users, tolerancia);
+                            backtracking_D(servers, users, tolerancia, contador + 1);
                             aux2.getServidores()[index].getUsuarios().remove(users[i]);
                             aux2.getServidores()[index].quitarValores(users[i], servers[index]);
                             visitado[i] = false;
-                            contador--;
                         }
                     }
                 }

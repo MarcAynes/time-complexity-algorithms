@@ -164,7 +164,7 @@ public class Menu {
 
                     switch (opcionM) {
                         case '1':
-                            distribucion.backtracking_D(server, user, tolerancia);
+                            distribucion.backtracking_D(server, user, tolerancia, 0);
                             distribucion.getSolucion();
                             break;
 

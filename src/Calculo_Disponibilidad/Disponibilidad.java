@@ -125,7 +125,7 @@ public class Disponibilidad {
     }
 
     public void setBestCoste(TipoCola Bestc){
-        this.bestCoste.setCoste(Bestc.getCost());
+        this.bestCoste.setCoste((double) Bestc.getCost());
         this.bestCoste.setNodos(Bestc.getArray());
 
     }
