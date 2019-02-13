@@ -111,7 +111,7 @@ public class BranchAndBound {
             }
 
             for (int i = 0; i < OptionsF.size(); i++) {
-                if ((OptionsF.get(i).getLastNode().getId() == server[(int) (destino)].getId() && OptionsF.get(i).getFiability() > BestF.getFiability()) && OptionsF.size() > i) {
+                if ((server[(int) destino].getReachableFrom().contains(OptionsF.get(i).getLastNode().getId()) && OptionsF.get(i).getFiability() > BestF.getFiability()) && OptionsF.size() > i) {
                     BestF = OptionsF.get(i);
                 } else {
                     if (OptionsF.get(i).getFiability() > BestF.getFiability()) {
