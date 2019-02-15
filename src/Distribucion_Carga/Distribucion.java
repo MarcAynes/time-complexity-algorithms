@@ -12,8 +12,7 @@ import static Distribucion_Carga.Haversiano.calcularDistancia;
 public class Distribucion {
     private Solution2 best, aux2;
     private List<Solution2> posiblesBest;
-    private boolean [] visitado;
-    int sizeUser, sizeServer;
+    private int sizeUser, sizeServer;
 
     public Distribucion(int sizeServer, int sizeUser) {
 
@@ -23,10 +22,10 @@ public class Distribucion {
         this.sizeServer = sizeServer;
         this.sizeUser = sizeUser;
 
-        visitado = new boolean[sizeUser];
-        Arrays.fill(visitado, false);
+    }
 
-
+    public void resetAuxiliar(){
+        aux2 = new Solution2(sizeServer);
     }
 
     public void greedy_D(Server[] servers, User [] users){
