@@ -1,7 +1,9 @@
 package Distribucion_Carga;
 
 import Calculo_Disponibilidad.Solution;
+import users.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Solution2 {
@@ -79,7 +81,10 @@ public class Solution2 {
         int size = solution.getServidores().length;
 
         for(int i = 0; i < size; i++){
-            this.servidores[i] = solution.servidores[i];
+            this.servidores[i].setCargaActividad(solution.servidores[i].getCargaActividad());
+            this.servidores[i].setDiferenciaProximidad(solution.servidores[i].getDiferenciaProximidad());
+             List<User> aux = new ArrayList<>(solution.servidores[i].getUsuarios());
+            this.servidores[i].setUsuarios(aux);
         }
 
         this.resultadoEquitividad = solution.getResultadoEquitividad();

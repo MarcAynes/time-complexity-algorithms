@@ -173,7 +173,8 @@ public class Menu {
                             break;
 
                         case '3':
-
+                            distribucion.greedy_D(server, user);
+                            distribucion.getSolucion();
                             break;
 
                         case '4':
