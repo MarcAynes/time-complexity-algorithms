@@ -173,11 +173,15 @@ public class Menu {
                             break;
 
                         case '3':
-
+                            distribucion.greedy_D(server, user);
+                            distribucion.getSolucion();
                             break;
 
                         case '4':
-
+                            distribucion.greedy_D(server, user);
+                            distribucion.resetAuxiliar();
+                            distribucion.backtracking_D(server, user, tolerancia, 0);
+                            distribucion.getSolucion();
                             break;
 
                         case '5':

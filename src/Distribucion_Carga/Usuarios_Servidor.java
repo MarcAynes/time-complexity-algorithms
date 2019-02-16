@@ -23,12 +23,24 @@ public class Usuarios_Servidor {
         return usuarios;
     }
 
+    public void setUsuarios(List<User> usuarios) {
+        this.usuarios = usuarios;
+    }
+
     public double getCargaActividad() {
         return cargaActividad;
     }
 
     public double getDiferenciaProximidad() {
         return diferenciaProximidad;
+    }
+
+    public void setCargaActividad(double cargaActividad) {
+        this.cargaActividad = cargaActividad;
+    }
+
+    public void setDiferenciaProximidad(double diferenciaProximidad) {
+        this.diferenciaProximidad = diferenciaProximidad;
     }
 
     public void sumarValores(User user, Server server){
