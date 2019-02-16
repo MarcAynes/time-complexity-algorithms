@@ -85,4 +85,12 @@ public class Solution2 {
         this.resultadoEquitividad = solution.getResultadoEquitividad();
         this.resultadoProximidad = solution.getResultadoProximidad();
     }
+
+    public void setResultadoEquitividad(double i){
+        resultadoEquitividad = i;
+    }
+
+    public void setResultadoProximidad(double i){
+        resultadoProximidad = i;
+    }
 }

@@ -17,6 +17,8 @@ public class Cola {
     }
 
     public void Ordenate(){
+
+
         QuickSort(0, queue.size() - 1);
     }
 
