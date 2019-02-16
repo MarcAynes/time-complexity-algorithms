@@ -6,11 +6,14 @@ import Calculo_Disponibilidad.Disponibilidad;
 import Calculo_Disponibilidad.Greedy;
 import Distribucion_Carga.BranchANDBound2;
 import Distribucion_Carga.Distribucion;
+import Distribucion_Carga.Solution2;
 import Server.Server;
 import nodes.Node;
 import users.User;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Menu {
@@ -163,31 +166,71 @@ public class Menu {
                         System.out.println("6. Salir");
                         opcionM = sc.next().charAt(0);
                     } while (opcionM < '1' || opcionM > '6');
+                    long StartTime2;
+                    long EndTime2;
 
                     switch (opcionM) {
                         case '1':
+                            StartTime2 = System.nanoTime();
                             distribucion.backtracking_D(server, user, tolerancia, 0);
                             distribucion.getSolucion();
+                            EndTime2 = System.nanoTime();
+                            System.out.println("tiempo de ejecucion: " + ((float) (EndTime2 - StartTime2))/1000000 + "ms");
                             break;
 
                         case '2':
+                            StartTime2 = System.nanoTime();
                             BranchANDBound2 carga = new BranchANDBound2(server.length, user.length, user, tolerancia);
                             carga.Branch(server, user);
+                            EndTime2 = System.nanoTime();
+                            System.out.println("tiempo de ejecucion: " + ((float) (EndTime2 - StartTime2))/1000000 + "ms");
+
                             break;
 
                         case '3':
+                            StartTime2 = System.nanoTime();
                             distribucion.greedy_D(server, user);
                             distribucion.getSolucion();
+                            EndTime2 = System.nanoTime();
+                            System.out.println("tiempo de ejecucion: " + ((float) (EndTime2 - StartTime2))/1000000 + "ms");
+
                             break;
 
                         case '4':
+                            StartTime2 = System.nanoTime();
                             distribucion.greedy_D(server, user);
                             distribucion.resetAuxiliar();
                             distribucion.backtracking_D(server, user, tolerancia, 0);
                             distribucion.getSolucion();
+                            EndTime2 = System.nanoTime();
+                            System.out.println("tiempo de ejecucion: " + ((float) (EndTime2 - StartTime2))/1000000 + "ms");
+
                             break;
 
                         case '5':
+                            StartTime2 = System.nanoTime();
+                            distribucion.greedy_D(server, user);
+                            distribucion.resetAuxiliar();
+                            Solution2 aux = distribucion.getBest();
+                            Integer[] best = new Integer[user.length];
+
+                            for(int i = 0; i < server.length; i++){
+                                for (int z = 0; z < aux.getServidores()[i].getUsuarios().size(); z++) {
+                                    for (int j = 0; j < user.length; j++) {
+                                        if (aux.getServidores()[i].getUsuarios().get(z).getUsername() == user[j].getUsername()) {
+                                            best[j] = i;
+                                        }
+                                    }
+                                }
+
+                            }
+                            ArrayList<Integer> best2 = new ArrayList<>(Arrays.asList(best));
+                            BranchANDBound2 cargaGreedy = new BranchANDBound2(server.length, user.length, user, tolerancia);
+                            cargaGreedy.setBest(best2, user);
+                            cargaGreedy.Branch(server, user);
+
+                            EndTime2 = System.nanoTime();
+                            System.out.println("tiempo de ejecucion: " + ((float) (EndTime2 - StartTime2))/1000000 + "ms");
 
                             break;
 

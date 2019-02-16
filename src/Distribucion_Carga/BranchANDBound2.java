@@ -4,6 +4,7 @@ import Distribucion_Carga.Cola2.Cola2;
 import Server.Server;
 import users.User;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -68,8 +69,12 @@ public class BranchANDBound2 {
                 }else{
                     if (auxiliar < cost){
                         double distancia = 0.0;
-                        for (int i = 0; i < sizeUser; i++){
-                            distancia += calcularDistancia(users[i].getPosts().get(0).getLocation().get(0), users[i].getPosts().get(0).getLocation().get(1), servers[best.get(i)].getLocation().get(0), servers[best.get(i)].getLocation().get(1));
+                        for (int i = 0; i < sizeUser; i++) {
+                            double distanciaAux = 0.0;
+                            for (int j = 0; j < users[i].getPosts().size(); j++) {
+                                distanciaAux += calcularDistancia(users[i].getPosts().get(j).getLocation().get(0), users[i].getPosts().get(j).getLocation().get(1), servers[best.get(i)].getLocation().get(0), servers[best.get(i)].getLocation().get(1));
+                            }
+                            distancia += distanciaAux/users[i].getPosts().size();
                         }
                         Empresa a = new Empresa();
                         a.Add(best, distancia, cost);
@@ -80,7 +85,12 @@ public class BranchANDBound2 {
                         if (auxiliar - tolerancia < cost){
                             double distancia = 0.0;
                             for (int i = 0; i < sizeUser; i++){
-                                distancia += calcularDistancia(users[i].getPosts().get(0).getLocation().get(0), users[i].getPosts().get(0).getLocation().get(1), servers[x.get(i)].getLocation().get(0), servers[x.get(i)].getLocation().get(1));
+                                double distanciaAux = 0.0;
+                                for (int j = 0; j < users[i].getPosts().size(); j++) {
+                                    distanciaAux += calcularDistancia(users[i].getPosts().get(j).getLocation().get(0), users[i].getPosts().get(j).getLocation().get(1), servers[x.get(i)].getLocation().get(0), servers[x.get(i)].getLocation().get(1));
+                                }
+
+                                distancia += distanciaAux/users[i].getPosts().size();
                             }
                             Empresa a = new Empresa();
                             a.Add(x, distancia, cost);
@@ -124,12 +134,17 @@ public class BranchANDBound2 {
 
         double distancia = 0.0;
         for (int i = 0; i < sizeUser; i++){
-            distancia += calcularDistancia(users[i].getPosts().get(0).getLocation().get(0), users[i].getPosts().get(0).getLocation().get(1), servers[best.get(i)].getLocation().get(0), servers[best.get(i)].getLocation().get(1));
+            double distanciaAux = 0.0;
+            for (int j = 0; j < users[i].getPosts().size(); j++) {
+                distanciaAux += calcularDistancia(users[i].getPosts().get(j).getLocation().get(0), users[i].getPosts().get(j).getLocation().get(1), servers[best.get(i)].getLocation().get(0), servers[best.get(i)].getLocation().get(1));
+            }
+            distancia += distanciaAux/users[i].getPosts().size();
         }
 
         for (int i = 0; i < posibles.size(); i++){
             if(posibles.get(i).getCost() - tolerancia < cost && posibles.get(i).getDistancia() < distancia){
                 best = posibles.get(i).getBuenos();
+                distancia = posibles.get(i).getDistancia();
             }
         }
 
@@ -144,6 +159,25 @@ public class BranchANDBound2 {
             System.out.println("---------------------------------------------------");
         }
         System.out.println(tolerancia);
+
+    }
+
+    public void setBest(ArrayList<Integer> best, User[] users){
+        this.best = best;
+        double max, min;
+        max = 0.0;
+        min = 999999999.0;
+        for (int y = 0; y < sizeServer; y++){
+            double aux = 0.0;
+            for (int i = 0; i < sizeUser;i++){
+                if (best.get(i) == y){
+                    aux += users[i].getActivity();
+                }
+            }
+            max = (aux > max) ? aux:max;
+            min = (aux < min) ? aux:min;
+        }
+        this.cost = max - min;
 
     }
 }

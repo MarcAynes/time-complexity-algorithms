@@ -159,4 +159,8 @@ public class Distribucion {
         }
     }
 
+    public  Solution2 getBest(){
+        return best;
+    }
+
 }
