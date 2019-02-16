@@ -5,6 +5,7 @@ import Calculo_Disponibilidad.Solution;
 import Distribucion_Carga.Solution2;
 import users.User;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Cola2 {
@@ -26,14 +27,14 @@ public class Cola2 {
         QuickSort2(0, queue.size() - 1);
     }
 
-    public void enqueue(Solution2 a){
+    public void enqueue(ArrayList<Integer> a){
         queue.add(a);
         QuickSort2(0, queue.size() - 1);
     }
 
-    public Solution2 dequeue(){
+    public ArrayList<Integer> dequeue(){
 
-        Solution2 a = queue.get(0);
+        ArrayList<Integer> a = queue.get(0);
         queue.remove(0);
         return a;
     }
@@ -50,17 +51,17 @@ public class Cola2 {
 
     private num Particio(int start, int length){
         int mig = (start + length)/2;
-        Solution2 pivot = queue.get(mig);
-        Solution2 tmp;
+        ArrayList<Integer> pivot = queue.get(mig);
+        ArrayList<Integer> tmp;
         int left = start;
         int right = length;
 
 
         while (left <= right){
-            while(queue.get(left).getActivity() > pivot.getActivity()){
+            while(queue.get(left).size() > pivot.size()){
                 left++;
             }
-            while (queue.get(right).getActivity() < pivot.getActivity()){
+            while (queue.get(right).size() < pivot.size()){
                 right--;
             }
             if (left < right){

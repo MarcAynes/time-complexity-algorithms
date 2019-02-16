@@ -4,6 +4,7 @@ import Calculo_Disponibilidad.BranchAndBound;
 import Calculo_Disponibilidad.Cola.TipoCola;
 import Calculo_Disponibilidad.Disponibilidad;
 import Calculo_Disponibilidad.Greedy;
+import Distribucion_Carga.BranchANDBound2;
 import Distribucion_Carga.Distribucion;
 import Server.Server;
 import nodes.Node;
@@ -26,7 +27,8 @@ public class Menu {
             tolerancia += user[i].getActivity();
         }
 
-        tolerancia /= 5;
+        tolerancia /= 100;
+        tolerancia = tolerancia*5;
 
         System.out.println("Este es el menu principal de InstaSalle!");
 
@@ -169,7 +171,8 @@ public class Menu {
                             break;
 
                         case '2':
-
+                            BranchANDBound2 carga = new BranchANDBound2(server.length, user.length, user, tolerancia);
+                            carga.Branch(server, user);
                             break;
 
                         case '3':

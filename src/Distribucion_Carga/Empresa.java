@@ -2,42 +2,34 @@ package Distribucion_Carga;
 
 import users.User;
 
+import java.util.ArrayList;
+
 public class Empresa {
-    private Server[] servidores;
-    private double diferenciaActividad = 0.0;
-    int serverMax = -1;
-    int serverMin = 0;
+    ArrayList<Integer> buenos = new ArrayList<>();
+    double distanciaTotal = 0.0;
+    double costTotal = 0.0;
 
-
-    public Empresa(int i){
-
-        servidores = new Server[i];
+    public Empresa(){
 
     }
 
-    public void addUser(int servidor, User u){
-
-        servidores[servidor].AddUser(u);
-        if(serverMax == -1){
-            serverMax = servidor;
-        }else{
-            if(servidores[servidor].GetActivity() > servidores[serverMax].GetActivity()){
-                serverMax = servidor;
-            }
-            if(servidores[servidor].GetActivity() < servidores[serverMin].GetActivity()){
-                serverMin = servidor;
-            }
-            diferenciaActividad = servidores[serverMax].GetActivity() - servidores[serverMin].GetActivity();
-        }
+    public void Add(ArrayList<Integer> aux, double distancia, double cost){
+        buenos = aux;
+        this.distanciaTotal = distancia;
+        this. costTotal = cost;
     }
 
-    public Double GetDiferenciaActividad(){
-
-        return diferenciaActividad;
+    public double getCost(){
+        return costTotal;
     }
-    public void SetDiferenciaActividad(double activity){
 
-        diferenciaActividad = activity;
+    public double getDistancia(){
+        return distanciaTotal;
     }
+
+    public ArrayList<Integer> getBuenos(){
+        return buenos;
+    }
+
 
 }

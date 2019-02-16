@@ -50,6 +50,7 @@ public class Usuarios_Servidor {
         for (int i = 0; i < size; i++){
             diferenciaProximidad += calcularDistancia(user.getPosts().get(i).getLocation().get(0), user.getPosts().get(i).getLocation().get(1), server.getLocation().get(0), server.getLocation().get(1));
         }
+        diferenciaProximidad /= size;
 
     }
 
