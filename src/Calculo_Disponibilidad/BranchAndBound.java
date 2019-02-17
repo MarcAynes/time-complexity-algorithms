@@ -54,6 +54,10 @@ public class BranchAndBound {
 
             }
 
+            if(server[(int) destino].getReachableFrom().contains(x.getLastNode().getId()) && x.getCost() < Best.getCost()){
+                Best = x;
+            }
+
             for(int i = 0; (x.getLastNode().getConnectsTo().size() > i && !contiene(x, Options, i)); i++){        //expand
                     if (x.getLastNode().getConnectsTo().size() > i && !contiene(x, Options, i)) {
                         TipoCola aux = new TipoCola(x.getCost() + x.getLastNode().getConnectsTo().get(i).getCost(), x, candidates[x.getLastNode().getConnectsTo().get(i).getTo() - 1]);
@@ -99,6 +103,10 @@ public class BranchAndBound {
 
             } else {
                 y = new TipoCola();
+            }
+
+            if(server[(int) destino].getReachableFrom().contains(y.getLastNode().getId()) && y.getFiability() > BestF.getFiability()){
+                BestF = y;
             }
 
             for (int i = 0; (y.getLastNode().getConnectsTo().size() > i && !contiene(y, OptionsF, i)); i++) {
