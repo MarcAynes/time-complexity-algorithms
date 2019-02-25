@@ -10,13 +10,14 @@ import java.util.List;
 import static Distribucion_Carga.Haversiano.calcularDistancia;
 
 public class Distribucion {
-    private Solution2 best, aux2;
+    private Solution2 best, aux2, prueba, prueba2;
     private List<Solution2> posiblesBest;
     private int sizeUser, sizeServer;
 
     public Distribucion(int sizeServer, int sizeUser) {
 
         best = new Solution2(sizeServer);
+        prueba2 = new Solution2(sizeServer);
         posiblesBest = new ArrayList<>();
         aux2 = new Solution2(sizeServer);
         this.sizeServer = sizeServer;
@@ -91,7 +92,7 @@ public class Distribucion {
             }
 
             else {
-                if (aux2.getResultadoEquitividad() < best.getResultadoEquitividad() + tolerancia && aux2.getResultadoProximidad() < best.getResultadoProximidad()) {
+                if (aux2.getResultadoEquitividad() < best.getResultadoEquitividad() + tolerancia) {
                     Solution2 aux = new Solution2(sizeServer);
                     aux.clonar(aux2);
                     posiblesBest.add(aux);
@@ -142,11 +143,17 @@ public class Distribucion {
                     solucion = posiblesBest.get(k);
                 }
                 else {
-                    if(posiblesBest.get(k).getResultadoProximidad() < solucion.getResultadoProximidad()){
+                    if(posiblesBest.get(k).getResultadoProximidad() < solucion.getResultadoProximidad() || (posiblesBest.get(k).getResultadoProximidad() == solucion.getResultadoProximidad() && posiblesBest.get(k).getResultadoEquitividad() < solucion.getResultadoEquitividad())){
                         solucion = posiblesBest.get(k);
                     }
                 }
             }
+
+            if(solucion.getResultadoProximidad() >= best.getResultadoProximidad()){
+                solucion = best;
+            }
+
+            prueba = solucion;
 
             System.out.println("Distribucion servidores:");
             for(int i = 0; i < sizeServer; i++){
@@ -159,8 +166,36 @@ public class Distribucion {
         }
     }
 
-    public  Solution2 getBest(){
+    public Solution2 getBest(){
         return best;
+    }
+
+    public void hola(Server[] servers, User [] users){
+        prueba2.getServidores()[0].getUsuarios().add(users[2]);
+        prueba2.getServidores()[0].sumarValores(users[2], servers[0]);
+
+        prueba2.getServidores()[1].getUsuarios().add(users[1]);
+        prueba2.getServidores()[1].sumarValores(users[1], servers[1]);
+
+        prueba2.getServidores()[1].getUsuarios().add(users[6]);
+        prueba2.getServidores()[1].sumarValores(users[6], servers[1]);
+
+        prueba2.getServidores()[2].getUsuarios().add(users[0]);
+        prueba2.getServidores()[2].sumarValores(users[0], servers[2]);
+
+        prueba2.getServidores()[3].getUsuarios().add(users[3]);
+        prueba2.getServidores()[3].sumarValores(users[3], servers[3]);
+
+        prueba2.getServidores()[4].getUsuarios().add(users[4]);
+        prueba2.getServidores()[4].sumarValores(users[4], servers[4]);
+
+        prueba2.getServidores()[4].getUsuarios().add(users[5]);
+        prueba2.getServidores()[4].sumarValores(users[5], servers[4]);
+
+        prueba2.equitividadCarga();
+        prueba2.cercaniaUsuarios();
+
+        System.out.println(prueba2.getResultadoEquitividad() + " " + prueba2.getResultadoProximidad());
     }
 
 }

@@ -171,6 +171,7 @@ public class Menu {
 
                     switch (opcionM) {
                         case '1':
+                            distribucion.hola(server, user);
                             StartTime2 = System.nanoTime();
                             distribucion.backtracking_D(server, user, tolerancia, 0);
                             distribucion.getSolucion();
