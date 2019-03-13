@@ -31,7 +31,7 @@ public class BranchAndBound {
 
             for (int i = 0; i < a[(int) (servidor)].getReachableFrom().size(); i++) {
 
-                    TipoCola aux = new TipoCola(0, candidates[(int) (a[(int) (servidor)].getReachableFrom().get(i) - 1)]);
+                    TipoCola aux = new TipoCola(0, candidates[(int) (a[(int) (servidor)].getReachableFrom().get(i) - 1)], candidates[(int) (a[(int) (servidor)].getReachableFrom().get(i) - 1)].getReliability());
                     cola.enqueueNoOrdenate(aux);
                     colaF.enqueueNoOrdenate(aux);
             }

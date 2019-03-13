@@ -34,6 +34,15 @@ public class TipoCola {
 
     }
 
+    public TipoCola(long c, Node n, Double f){
+
+        node = new ArrayList<>();
+        cost = c;
+        Fiability = f;
+        node.add(n);
+
+    }
+
     public TipoCola(long c, TipoCola n, Node nodeAux){
         node = new ArrayList<>();
         cost = c;

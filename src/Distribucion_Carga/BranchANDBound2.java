@@ -141,10 +141,13 @@ public class BranchANDBound2 {
             distancia += distanciaAux/users[i].getPosts().size();
         }
 
+        int maincra = 0;
+
         for (int i = 0; i < posibles.size(); i++){
             if(posibles.get(i).getCost() - tolerancia < cost && posibles.get(i).getDistancia() < distancia){
                 best = posibles.get(i).getBuenos();
                 distancia = posibles.get(i).getDistancia();
+                maincra = i;
             }
         }
 
@@ -159,6 +162,10 @@ public class BranchANDBound2 {
             System.out.println("---------------------------------------------------");
         }
         System.out.println(tolerancia);
+        System.out.println(cost);
+        System.out.println("Distancia = " + distancia);
+        System.out.println(posibles.get(maincra).getCost());
+
 
     }
 
