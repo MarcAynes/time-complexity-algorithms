@@ -171,18 +171,20 @@ public class Menu {
 
                     switch (opcionM) {
                         case '1':
-                            distribucion.hola(server, user);
+                            //distribucion.hola(server, user);
                             StartTime2 = System.nanoTime();
                             distribucion.backtracking_D(server, user, tolerancia, 0);
-                            distribucion.getSolucion();
+                            //distribucion.getSolucion();
                             EndTime2 = System.nanoTime();
+                            BranchANDBound2 carga = new BranchANDBound2(server.length, user.length, user, tolerancia);
+                            carga.Branch(server, user);
                             System.out.println("tiempo de ejecucion: " + ((float) (EndTime2 - StartTime2))/1000000 + "ms");
                             break;
 
                         case '2':
                             StartTime2 = System.nanoTime();
-                            BranchANDBound2 carga = new BranchANDBound2(server.length, user.length, user, tolerancia);
-                            carga.Branch(server, user);
+                            BranchANDBound2 cargaBack = new BranchANDBound2(server.length, user.length, user, tolerancia);
+                            cargaBack.Branch(server, user);
                             EndTime2 = System.nanoTime();
                             System.out.println("tiempo de ejecucion: " + ((float) (EndTime2 - StartTime2))/1000000 + "ms");
 
