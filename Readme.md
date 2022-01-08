@@ -1,5 +1,5 @@
 # sort-algorithms
-Analysis and implementation of a wide range of sorting algorithms to compare their efficiency over different problems and datasets
+Analysis and implementation of a wide range of time complexity algorithms to compare their efficiency over different problems and datasets
 
 IDE: IntellJ IDEA
 Programming language: JAVA
