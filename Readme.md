@@ -1,4 +1,4 @@
-# sort-algorithms
+# time-complexity-algorithms
 Analysis and implementation of a wide range of time complexity algorithms to compare their efficiency over different problems and datasets
 
 IDE: IntellJ IDEA
